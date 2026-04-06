@@ -13,7 +13,7 @@ npx get-caiv
 This will open a beautiful TUI to select which tools you want to install CAIV to.
 
 ### Supported Tools:
-- **Pi / GSD**
+- **Pi**
 - **Claude Code**
 - **Cursor**
 - **Windsurf**
