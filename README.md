@@ -49,8 +49,3 @@ When active, Claude follows these rules:
 > done."
 
 ---
-
-Published to npm as `get-caiv`.
-To publish a new version:
-1. `npm version patch`
-2. `npm publish`
