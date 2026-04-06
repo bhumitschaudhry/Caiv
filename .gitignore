@@ -1,0 +1,8 @@
+node_modules
+dist
+*.log
+.DS_Store
+
+docs/
+caiv/
+docs/SPEC.md

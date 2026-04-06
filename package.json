@@ -1,0 +1,31 @@
+{
+  "name": "get-caiv",
+  "version": "1.0.0",
+  "description": "Activate or deactivate caveman communication mode for AI coding tools.",
+  "main": "dist/index.js",
+  "bin": {
+    "get-caiv": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src/SKILL.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').copyFileSync('src/SKILL.md', 'dist/SKILL.md')\"",
+    "start": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
