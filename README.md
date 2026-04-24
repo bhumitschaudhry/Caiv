@@ -26,8 +26,7 @@ This will open a beautiful TUI to select which tools you want to install CAIV to
 
 Once installed, use the following commands in your tool's chat:
 
-- `/caiv activate`: Turns on caveman mode.
-- `/caiv deactivate`: Returns to normal behavior.
+- `/caiv`: Toggles caveman mode on/off.
 
 ## How it works
 

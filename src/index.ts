@@ -101,7 +101,7 @@ async function main() {
   p.note(
     pc.green('CAIV is now installed.') + 
     '\n' + 
-    'To use it, just send ' + pc.bold('/get-caiv activate') + ' in your terminal.',
+    'To toggle it, just send ' + pc.bold('/caiv') + ' in your tool\'s chat.',
     'Ready to vibe'
   );
 
@@ -109,23 +109,22 @@ async function main() {
 }
 
 function appendToFile(filePath: string, content: string) {
-  const marker = '\n\n# --- CAIV SKILL ---\n';
+  const markerStart = '# --- CAIV SKILL ---';
+  const markerEnd = '# --- END CAIV SKILL ---';
+  
+  let existingContent = '';
   if (fs.existsSync(filePath)) {
-    const existingContent = fs.readFileSync(filePath, 'utf8');
-    if (existingContent.includes('# get-caiv')) {
-      const regex = /# --- CAIV SKILL ---[\s\S]*# --- END CAIV SKILL ---/m;
-      if (regex.test(existingContent)) {
-        const newContent = existingContent.replace(regex, `${marker}${content}\n# --- END CAIV SKILL ---`);
-        fs.writeFileSync(filePath, newContent);
-      } else {
-        fs.appendFileSync(filePath, `\n${marker}${content}\n# --- END CAIV SKILL ---`);
-      }
-    } else {
-      fs.appendFileSync(filePath, `\n${marker}${content}\n# --- END CAIV SKILL ---`);
-    }
-  } else {
-    fs.writeFileSync(filePath, `${marker}${content}\n# --- END CAIV SKILL ---`);
+    existingContent = fs.readFileSync(filePath, 'utf8');
   }
+
+  // Remove any previous versions using the markers
+  const regex = new RegExp(`\\n?${markerStart}[\\s\\S]*?${markerEnd}\\n?`, 'g');
+  const cleanedContent = existingContent.replace(regex, '').trim();
+
+  const newBlock = `\n\n${markerStart}\n${content}\n${markerEnd}\n`;
+  const finalContent = cleanedContent ? cleanedContent + newBlock : newBlock.trimStart();
+  
+  fs.writeFileSync(filePath, finalContent);
 }
 
 main().catch(console.error);

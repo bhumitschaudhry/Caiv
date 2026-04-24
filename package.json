@@ -1,6 +1,6 @@
 {
   "name": "get-caiv",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Activate or deactivate caveman communication mode for AI coding tools.",
   "main": "dist/index.js",
   "bin": {
